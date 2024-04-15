@@ -84,7 +84,7 @@ END //
 
 
 
-DROP PROCEDURE IF EXISTS Deposit;
+DROP PROCEDURE IF EXISTS Deposit//
 CREATE PROCEDURE Deposit(
     IN AccountNumber INT,
     IN Amount DECIMAL(10, 2)
@@ -96,11 +96,14 @@ BEGIN
 
     IF ExistsCount = 0 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Account does not exist.';
+    ELSEIF Amount <= 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Amount must be positive.';
     ELSE
         INSERT INTO Transactions (AccountNumber, TransactionType, Amount)
         VALUES (AccountNumber, 'Deposit', Amount);
     END IF;
 END //
+
 
 
 
