@@ -50,6 +50,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2.setText("Card No:");
 
         accountno.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        accountno.setText("9775");
         accountno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accountnoActionPerformed(evt);
@@ -60,6 +61,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel5.setText("Pin");
 
         password.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        password.setText("1234");
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);

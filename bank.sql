@@ -119,7 +119,7 @@ BEGIN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Insufficient funds.';
     ELSE
         INSERT INTO Transactions (AccountNumber, TransactionType, Amount)
-        VALUES (AccountNumber, 'Withdrawal', Amount);
+        VALUES (_AccountNumber, 'Withdrawal', Amount);
     END IF;
 END //
 
@@ -262,4 +262,22 @@ CALL CreateUserAndAccount('John', 'Doe', 'john.doe@example.com', 'password123');
 -- =======================================================================================================================================
 -- ====================================== NEW STUFF =====================================================================================
 -- =======================================================================================================================================
+DELIMITER //
+DROP PROCEDURE IF EXISTS GetTransactionHistory//
+CREATE PROCEDURE GetTransactionHistory(IN _AccountNumber INT)
+BEGIN
+    SELECT TransactionType,Amount,TransactionDate FROM Transactions WHERE AccountNumber = _AccountNumber;
+END //
 
+CALL GetTransactionHistory(9775);//
+
+
+DROP PROCEDURE IF EXISTS ChangePin;
+DELIMITER //
+CREATE PROCEDURE ChangePin(IN _AccountNumber INT, IN _NewPin VARCHAR(4))
+BEGIN
+    UPDATE Users JOIN Accounts ON Users.UserID = Accounts.UserID SET Password = _NewPin WHERE AccountNumber = _AccountNumber;
+    SELECT 'PIN changed successfully.' AS Message;
+END //
+DELIMITER ;
+CALL ChangePin(9770,  '5678');
