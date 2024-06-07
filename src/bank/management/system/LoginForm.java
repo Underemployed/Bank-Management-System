@@ -46,7 +46,7 @@ public class LoginForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         accountno.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        accountno.setText("9775");
+        accountno.setText("");
         accountno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accountnoActionPerformed(evt);
@@ -90,7 +90,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         password.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
-        password.setText("1234");
+        password.setText("");
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
